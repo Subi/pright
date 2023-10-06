@@ -48,11 +48,11 @@ func (m *Monitor) getHotelData() {
 	}
 	Hotels := types.HotelsResponse{}
 	resp, err := m.Api.Request("POST", url, headers, strings.NewReader(payload))
-	defer resp.Body.Close()
 	if err != nil {
 		log.Printf("Error occured fetching hotel data : %s \n", err)
 		return
 	}
+	defer resp.Body.Close()
 	if resp.StatusCode != 200 {
 		log.Printf("Response status: %v", resp.StatusCode)
 		return
