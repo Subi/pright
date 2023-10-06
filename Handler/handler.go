@@ -36,7 +36,7 @@ func (h *Handler) UpdateHotel(hotel model.Hotel) {
 		return
 	}
 	if foundHotel.Price != hotel.Price {
-		err := h.DB.Model(&foundHotel).Update("price", hotel.Price).Error
+		err := h.DB.Model(&hotel).Where("name = ?", hotel.Name).Update("price", hotel.Price).Error
 		if errors.Is(err, gorm.ErrInvalidData) {
 			log.Println(err)
 			return
