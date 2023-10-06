@@ -35,10 +35,8 @@ func (h *Handler) UpdateHotel(hotel model.Hotel) {
 		h.SaveHotel(hotel)
 		return
 	}
-	var price float64 = 200.45
-	if foundHotel.Price != price {
-		foundHotel.Price = price
-		err := h.DB.Model(&foundHotel).Update("price", price).Error
+	if foundHotel.Price != hotel.Price {
+		err := h.DB.Model(&foundHotel).Update("price", hotel.Price).Error
 		if errors.Is(err, gorm.ErrInvalidData) {
 			log.Println(err)
 			return
