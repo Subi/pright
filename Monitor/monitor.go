@@ -51,13 +51,16 @@ func (m *Monitor) getHotelData() {
 	defer resp.Body.Close()
 	if err != nil {
 		log.Printf("Error occured fetching hotel data : %s \n", err)
+		return
 	}
 	if resp.StatusCode != 200 {
 		log.Printf("Response status: %v", resp.StatusCode)
+		return
 	}
 	decodeErr := json.NewDecoder(resp.Body).Decode(&Hotels)
 	if decodeErr != nil {
 		log.Printf("Error decoding Hotels JSON Response %v", decodeErr)
+		return
 	}
 
 	for _, hotel := range Hotels.Data.SearchResults.Hotels {
