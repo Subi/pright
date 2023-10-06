@@ -92,5 +92,5 @@ func UpdateHotelPricePayload(hotel *model.Hotel, price float64) string {
 				"type": "divider"
 			}
 		]
-	}`, hotel.Name, fmt.Sprintf("%g", price), fmt.Sprintf("%g", hotel.Price), hotel.Slug, hotel.Name, fmt.Sprintf("%g", hotel.Price), hotel.Stars, hotel.Image, hotel.Name, hotel.Location)
+	}`, hotel.Name, fmt.Sprintf("%g", hotel.Price), fmt.Sprintf("%g", price), hotel.Slug, hotel.Name, fmt.Sprintf("%g", price), hotel.Stars, hotel.Image, hotel.Name, hotel.Location)
 }
