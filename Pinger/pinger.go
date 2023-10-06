@@ -38,6 +38,6 @@ func sendAlert(payload string) {
 		log.Printf("Error executing client request %s", err)
 	}
 	if resp.StatusCode != 200 {
-		log.Printf("Error sending payload data %s", err)
+		log.Printf("Error sending payload data %v", err)
 	}
 }
